@@ -1,0 +1,152 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.1.min.js"></script>
+<script type="text/javascript" src="dist/handlebars.js"></script>
+<script type="text/javascript" src="dist/underscore.js"></script>
+<script type="text/javascript" src="dist/backbone.js"></script>
+
+<script id="post-template" type="handlebars">
+<form class="form-inline" id='post-form'>
+  <textarea name='post' id='post'></textarea>
+  <button type="submit" class="btn">Post</button>
+</form>
+</script>
+
+
+<script id="posts-template" type="handlebars">
+<li>{{post.body}}</li>
+</script>
+
+<script id="login-template" type='handlebars'>
+<div class='hero-unit'>
+<h2>Login</h2>
+<form class="form-inline" id='login-form'>
+  <input type="text" class="input-small" placeholder="Username" name='username' id='login-username'>
+  <input type="password" class="input-small" placeholder="Password" id='login-password'>
+  <button type="submit" class="btn">Sign in</button>
+</form>
+<h2>Register</h2>
+<form class="form-inline" id='register-form'>
+  <input type="text" class="input-small" placeholder="Username" id='register-username'>
+  <input type="password" class="input-small" placeholder="Password" id='register-password'>
+  <button type="submit" class="btn">Register</button>
+</form>
+</script>
+<script>
+$(function() {
+  
+  // Parse
+  Parse.initialize("mhjvyHjR5S3Y3unZBCvYNf2y2fvE8BwfGK4UHf3H", "vWj2F53VrIuhAzDqphqkbPuFPSrLgAocAuV1khaY");
+  var Post = Parse.Object.extend("Post");
+  var PostList = Parse.Collection.extend({ model: Post });
+  
+  var parseUser;
+  var postList = new PostList();
+
+  // Handlebars
+  var Templates = {};
+  $("script[type=handlebars]").each(function() {
+    Templates[this.id] = Handlebars.compile($(this).html());
+  });
+
+  // Views
+  var LoginView = Backbone.View.extend({
+    events: {
+      "submit #login-form": "login",
+      "submit #register-form": "register"
+    },
+
+    render: function() {
+      $(this.el).empty().append(Templates["login-template"]());
+      return this;
+    },
+
+    login: function(e) {
+      e.preventDefault();
+      Parse.User.logIn($("#login-username").val(), $("#login-password").val(), {
+        success: function(user) {
+          parseUser = user;
+          $("#content").empty().append(new PostView().render().el);
+        },
+        error: function(user, error) {
+          alert("Invalid Login");
+        }
+      });
+    },
+
+    register: function(e) {
+      e.preventDefault();
+       parseUser = new Parse.User({ username: $("#register-username").val(), 
+                              password: $("#register-password").val() });
+       parseUser.signUp(null, {
+        success: function(user) {
+          $("#content").empty().append(new PostView().render().el);
+        },
+        error: function(user, error) {
+          // Show the error message somewhere and let the user try again.
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    }
+
+  });
+
+
+  var PostView = Backbone.View.extend({
+    events: {
+      "submit #post-form": "newPost"
+    },
+    initialize: function() {
+
+    },
+
+    render: function() {
+      $(this.el).empty().append(Templates["post-template"]());
+      return this;
+    },
+
+    newPost: function(e) {
+      e.preventDefault();
+      var postText = $("#post").val();
+      var post = new Post({ body: postText });
+
+      post.save({
+        success: function() {
+          postList.fetch();
+          $("#post").val("");
+        }
+      });
+      
+    }
+
+  });
+
+  var PostsView = Backbone.View.extend({
+    tagName: "ul",
+    initialize: function() {
+      _.bindAll(this);
+      postList.on("reset",this.render);
+    },
+    render: function() {
+      $(this.el).empty()
+      var self = this;
+      postList.each(function(model) {
+        $(self.el).append(Templates["posts-template"]({ post: model.attributes }))
+      });
+
+      return this;
+    }
+
+  });
+  
+  var loginView = new LoginView();
+  $("#content").append(loginView.render().el);
+  $("#post-list").append(new PostsView().render().el);
+});
+</script>
+
+<div class='container'>
+  <div class='offset4 span4' id='content'></div>
+  <div class='offset4 span4' id='post-list'>
+  </div>
+</div>

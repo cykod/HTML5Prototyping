@@ -419,11 +419,11 @@ $(function() {
 
 <article class='slide slide-subhead'>
   <h1>Whatever works for you</h1>
-  <h2 class='slide'>Your Toolchain.<br/>Your Tech Stack.<br/>Your Skillest.</h2>
+  <h3 class='slide'>Your Toolchain.<br/>Your Tech Stack.<br/>Your Skillest.</h3>
 </article>
 
 <article class='slide slide-subhead'>
-  <h1>I'll be talking Code. That's me.</h1>
+  <h1>I'll be talking Code.<br/> That's me.</h1>
   <h3>Other Options: <a href='http://www.codiqa.com/'>Codiqa (Mobile)</a> <a href='http://jetstrap.com/'>Jetstrap (New)</a> 
 </article>
 
@@ -584,7 +584,6 @@ $ yeoman server
 </code></pre>
 </li>
 
-
 <li class='slide'>
 Can easily install components (using web package manage <a href='http://twitter.github.com/bower/'>bower</a>)
 <pre><code>
@@ -592,7 +591,447 @@ $ yeoman install bootstrap
 $ yeoman install backbone
 </code></pre>
 </li>
+
+
+<li class='slide'>
+When you're ready to deploy, just run build and deploy your dist/ directory.
+<pre><code>
+$ yeoman build
+</code></pre>
+</li>
 </article>
+
+<article class='slide slide-subhead'>
+  <h1><a href='http://twitter.github.com/bootstrap/'>Twitter Bootstrap</a></h1>
+  <h3>A set of LESS (and CSS) styles and JS components that give you an attractive
+  baseline app Web App design</h3>
+</article>
+
+<article class='slide slide-list'>
+<h1> Bootstrap Layouts</h1>
+<p>Provides both a regular and responsive grid layout. Showing responsive below.</p>
+<textarea class='coder-editor coder-editor-full'>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+<style> .bg { background-color:gray; color:white; text-align:center; padding:20px inherit; margin-bottom:5px; }</style>
+
+<div class='container'>
+  <div class='row'>
+    <div class='span12 bg'> I'm 12 rows wide</div>
+  </div>
+  <div class='row'>
+    <div class='span4 bg'> I'm 4 rows wide</div>
+    <div class='offset4 span4 bg'> I'm 4 rows wide after I skip 4</div>
+  </div>
+</div>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h1> Bootstrap Forms</h1>
+<p>Provides a number of different form styles</p>
+<textarea class='coder-editor coder-editor-full'>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+
+<h2>Basic</h2>
+<form>
+<legend>Legend</legend>
+<label>Label name</label>
+<input type="text" placeholder="Type something…">
+<span class="help-block">Example block-level help text here.</span>
+<label class="checkbox">
+  <input type="checkbox"> Check me out
+</label>
+<button type="submit" class="btn">Submit</button>
+</form>
+
+<h2>Inline</h2>
+<form class="form-inline">
+  <input type="text" class="input-small" placeholder="Email">
+  <input type="password" class="input-small" placeholder="Password">
+  <label class="checkbox">
+    <input type="checkbox"> Remember me
+  </label>
+  <button type="submit" class="btn">Sign in</button>
+</form>
+
+<h2>Horizontal</h2>
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input type="text" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <label class="checkbox">
+        <input type="checkbox"> Remember me
+      </label>
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+  </div>
+</form>
+</textarea>
+</article>
+
+<article class='slide slide-subhead'>
+  <h1><a href='http://twitter.github.com/bootstrap/components.html'>And lots more...</a></h1>
+</article>
+
+<article class='slide slide-list'>
+  <h2>Data: MongoDB is great for prototypes</h2>
+  <ul>
+  	<li class='slide'>
+  		Easy to install on almost any platform
+  	</li>
+  	<li class='slide'>
+  		Schema-less - send it data, get data back.
+  	</li>
+  	<li class='slide'>
+  		Well-supported: Run yourself, on Heroku, or via SaaS.
+  	</li>
+    <li class='slide'>
+    More <a href='http://www.mongodb.org/'>www.mongodb.org</a>
+    </li>
+  </ul>
+</article>
+
+<article class='slide slide-list'>
+<h1>mongodb-rest</h1>
+  <ul>
+
+    <li class='slide'>
+<pre><code>$ npm install mongodb-rest</code></pre>
+    </li>
+    <li class='slide'>
+    Create directory with a config.json to allow CORS requests:
+<pre><code>
+{ "db": {
+  "port": 27017,
+  "host": "localhost"
+},
+"server": {
+  "port": 3000,
+  "address": "0.0.0.0"
+},
+"accessControl": {
+  "allowOrigin": "*",
+  "allowMethods": "GET,POST,PUT,DELETE,HEAD,OPTIONS"
+},
+"flavor": "nounderscore",
+"debug":      true
+}
+</code></pre>
+</li>
+  	<li class='slide'>
+    Go to directory, run <pre><code>
+$ mongodb-rest
+    </code></pre>
+    </li>
+    <li class='slide'>
+      Full access to your MongoDB database via open REST. Awesome.
+    </li>
+    <li class='slide'>
+    Dangerous as hell.
+    </li>
+</article>
+
+
+<article class='slide slide-list'>
+<h1> Example on Heroku</h1>
+<p><a href='http://cors-demo.herokuapp.com/heroku_app7929607/rest'>http://cors-demo.herokuapp.com/heroku_app7929607/rest</a></p>
+<textarea class='coder-editor coder-editor-full'>
+<script>
+var baseURL = "http://cors-demo.herokuapp.com/heroku_app7929607/rest?desc=_id";
+var data = { name: "Pascal Rettig", favoriteColor: "blue", favoriteCereal:"Pebble O's" };
+$.post(baseURL,data);
+</script>
+</textarea>
+</article>
+
+<article class='slide slide-list'>
+<h2>Parse</h2>
+  <ul>
+  	<li class='slide'>
+  		Database as a service that started out targeted only a native mobile apps.
+  	</li>
+  	<li class='slide'>
+  		Released a JavaScript API, that is based on Backbone.
+  	</li>
+  	<li class='slide'>
+  		Has special User models, allows ACL to be set up with models.
+  	</li>
+  	<li class='slide'>
+    Easy to get started: <a href='https://parse.com/apps/quickstart'>Quick Start</a>
+  	</li>
+    <li class='slide'>
+    Excellent Docs: <a href='https://parse.com/docs/js_guide'>https://parse.com/docs/js_guide</a>
+    </li>
+  </ul>
+</article>
+
+
+<article class='slide slide-list'>
+<h1> Getting Started with Parse</h1>
+<textarea class='coder-editor coder-editor-full'>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.1.min.js"></script>
+
+<script>
+$(function() {
+
+  Parse.initialize("mhjvyHjR5S3Y3unZBCvYNf2y2fvE8BwfGK4UHf3H", "vWj2F53VrIuhAzDqphqkbPuFPSrLgAocAuV1khaY");
+
+  var Cat = Parse.Object.extend("Cat");
+  var CatCollection = Parse.Collection.extend({ model: Cat });
+
+  var cat = new Cat();
+  cat.set({ name: "Frank", weight: 5, cuteness: 0.5 });
+  cat.save({
+    success: function() {
+      $("body").append("Saved " + cat.get("name") + " the cat");
+    }
+  });
+
+});
+</script>
+</textarea>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Interaction</h2>
+ <ul>
+ 	<li class='slide'>At the base level: jQuery let's you set up and manipulate the page.</li>
+ 	<li class='slide'>Can quickly fall into jQuery soup, need more structure.</li>
+ 	<li class='slide'>Add in a MVC: Backbone is one of the most lightweight.</li>
+  <li class='slide'>Need support for some client side templating: <a href='http://handlebarsjs.com/'>Handlebars</a></li>
+</ul>
+</article>
+
+
+<article class='slide slide-list'>
+  <h1>Working with Handlebars</h1>
+<textarea class='coder-editor coder-editor-full'>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.1.min.js"></script>
+<script type="text/javascript" src="dist/handlebars.js"></script>
+
+<script id="cat-template" type="text/x-handlebars-template">
+<tr>
+  <td>{{name}}</td>
+  <td>{{weight}}lbs</td>
+  <td>{{cuteness}}</td>
+</tr>
+</script>
+<script>
+$(function() {
+  
+  // Parse
+  Parse.initialize("mhjvyHjR5S3Y3unZBCvYNf2y2fvE8BwfGK4UHf3H", "vWj2F53VrIuhAzDqphqkbPuFPSrLgAocAuV1khaY");
+  var Cat = Parse.Object.extend("Cat");
+  var CatCollection = Parse.Collection.extend({ model: Cat });
+
+  // Handlebars
+  var source = $("#cat-template").html()
+  var template = Handlebars.compile(source);
+
+  // Fetch Data
+  var cats = new CatCollection();
+  cats.fetch({ success: tableCats });
+
+  // Display It
+  function tableCats() {
+    cats.each(function(cat) {
+      $("#cat-table").append(template(cat.attributes));
+    });
+  }
+  
+});
+</script>
+
+<table id='cat-table' class='table table-striped'>
+  <tr>
+    <th>Name</th>
+    <th>Weight</th>
+    <th>Cuteness</th>
+  </tr>
+</table>
+</textarea>
+</article>
+
+
+
+<article class='slide slide-list'>
+  <h1>All Together Now</h1>
+<textarea class='coder-editor coder-editor-full'>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.1.min.js"></script>
+<script type="text/javascript" src="dist/handlebars.js"></script>
+<script type="text/javascript" src="dist/underscore.js"></script>
+<script type="text/javascript" src="dist/backbone.js"></script>
+
+<script id="post-template" type="handlebars">
+<form class="form-inline" id='post-form'>
+  <textarea name='post' id='post'>&lt/textarea>
+  <button type="submit" class="btn">Post</button>
+</form>
+</script>
+
+
+<script id="posts-template" type="handlebars">
+<li>{{post.body}}</li>
+</script>
+
+<script id="login-template" type='handlebars'>
+<div class='hero-unit'>
+<h2>Login</h2>
+<form class="form-inline" id='login-form'>
+  <input type="text" class="input-small" placeholder="Username" name='username' id='login-username'>
+  <input type="password" class="input-small" placeholder="Password" id='login-password'>
+  <button type="submit" class="btn">Sign in</button>
+</form>
+<h2>Register</h2>
+<form class="form-inline" id='register-form'>
+  <input type="text" class="input-small" placeholder="Username" id='register-username'>
+  <input type="password" class="input-small" placeholder="Password" id='register-password'>
+  <button type="submit" class="btn">Register</button>
+</form>
+</script>
+<script>
+$(function() {
+  
+  // Parse
+  Parse.initialize("mhjvyHjR5S3Y3unZBCvYNf2y2fvE8BwfGK4UHf3H", "vWj2F53VrIuhAzDqphqkbPuFPSrLgAocAuV1khaY");
+  var Post = Parse.Object.extend("Post");
+  var PostList = Parse.Collection.extend({ model: Post });
+  
+  var parseUser;
+  var postList = new PostList();
+
+  // Handlebars
+  var Templates = {};
+  $("script[type=handlebars]").each(function() {
+    Templates[this.id] = Handlebars.compile($(this).html());
+  });
+
+  // Views
+  var LoginView = Backbone.View.extend({
+    events: {
+      "submit #login-form": "login",
+      "submit #register-form": "register"
+    },
+
+    render: function() {
+      $(this.el).empty().append(Templates["login-template"]());
+      return this;
+    },
+
+    login: function(e) {
+      e.preventDefault();
+      Parse.User.logIn($("#login-username").val(), $("#login-password").val(), {
+        success: function(user) {
+          parseUser = user;
+          $("#content").empty().append(new PostView().render().el);
+        },
+        error: function(user, error) {
+          alert("Invalid Login");
+        }
+      });
+    },
+
+    register: function(e) {
+      e.preventDefault();
+       parseUser = new Parse.User({ username: $("#register-username").val(), 
+                              password: $("#register-password").val() });
+       parseUser.signUp(null, {
+        success: function(user) {
+          $("#content").empty().append(new PostView().render().el);
+        },
+        error: function(user, error) {
+          // Show the error message somewhere and let the user try again.
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    }
+
+  });
+
+
+  var PostView = Backbone.View.extend({
+    events: {
+      "submit #post-form": "newPost"
+    },
+    initialize: function() {
+
+    },
+
+    render: function() {
+      $(this.el).empty().append(Templates["post-template"]());
+      return this;
+    },
+
+    newPost: function(e) {
+      e.preventDefault();
+      var postText = $("#post").val();
+      var post = new Post({ body: postText });
+
+      post.save({
+        success: function() {
+          postList.fetch();
+          $("#post").val("");
+        }
+      });
+      
+    }
+
+  });
+
+  var PostsView = Backbone.View.extend({
+    tagName: "ul",
+    initialize: function() {
+      _.bindAll(this);
+      postList.on("reset",this.render);
+    },
+    render: function() {
+      $(this.el).empty()
+      var self = this;
+      postList.each(function(model) {
+        $(self.el).append(Templates["posts-template"]({ post: model.attributes }))
+      });
+
+      return this;
+    }
+
+  });
+  
+  var loginView = new LoginView();
+  $("#content").append(loginView.render().el);
+  $("#post-list").append(new PostsView().render().el);
+
+  postList.fetch();
+});
+</script>
+
+<div class='container'>
+  <div class='offset4 span4' id='content'></div>
+  <div class='offset4 span4' id='post-list'>
+  </div>
+</div>
+
+</textarea>
+</article>
+
 
 
 <script src='dist/coderdeck.min.js'></script>
