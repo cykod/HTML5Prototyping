@@ -14,7 +14,8 @@
     border: 1px solid #f1f1e7;
     padding: 30px 0px; }
   .deck-container .slide-list h1 {
-    margin-top: .35em;
+    margin:0;
+    padding-top: .35em;
     text-align: left;
     transform: none;
     -webkit-transform: none;
@@ -22,12 +23,13 @@
     -ms-transform: none;
     -o-tranform: none;
     position: static;
-    margin-bottom: .3em; }
+    padding-bottom: .3em; }
   .deck-container .slide-list h2 {
-    margin-left: .75em;
-    margin-top: .5em;
+    margin:0;
+    padding-left: .75em;
+    padding-top: .5em;
     text-align: left;
-    margin-bottom: .3em; }
+    padding-bottom: .3em; }
   .deck-container .slide-list h3 {
     margin-left: 2em;
     text-align: left;
@@ -211,10 +213,11 @@
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     line-height: 1em;
     text-transform: uppercase;
     color: #2ca58f;
+    word-spacing: .1em;
     font-size: 4em; }
   .deck-container h2 {
     font-size: 2.75em;
@@ -228,7 +231,7 @@
     word-spacing: .1em;
     padding: 0; }
   .deck-container h3 {
-    font-size: 1.2em;
+    font-size: 2em;
     font-weight: normal; }
   .deck-container h4 {
     font-size: 2em;
