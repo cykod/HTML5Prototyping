@@ -211,7 +211,7 @@
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.01em;
     line-height: 1em;
     text-transform: uppercase;
     color: #2ca58f;
@@ -224,7 +224,7 @@
     text-transform: uppercase;
     color: #2ca58f;
     border: none;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     word-spacing: .1em;
     padding: 0; }
   .deck-container h3 {
